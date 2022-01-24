@@ -1,0 +1,46 @@
+.customerContainer {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    align-items: center;
+    color: rgb(9, 59, 100);
+    margin-bottom: 50px;
+}
+
+.buttons {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(97, 98, 128);
+    box-shadow: 5px 10px #221f1f;
+    padding-bottom: 20px;
+}
+
+.buttons button {
+    margin-top: 20px;
+}
+
+.content{
+    background-color: rgb(97, 98, 128);
+    box-shadow: 5px 10px #221f1f;
+    padding: 20px;
+    margin-top: 50px;
+    font-size: 15px;
+}
+
+.form {
+    background-color: rgb(97, 98, 128);
+    box-shadow: 5px 10px #221f1f;
+    margin-top: 50px;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.input {
+    font-size: 15px;
+    margin-left: 15px;
+}
