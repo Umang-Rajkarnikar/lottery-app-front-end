@@ -14,7 +14,7 @@ const Owner = () => {
   const [manager, setManager] = useState("");
   const [ticketPrice, setTicketPrice] = useState(0);
   const blockchain = useContext(LotteryContext);
-  const { provider, web3Provider, signer, lottery_Contract, ERC20Contract, address } = blockchain;
+  const { lottery_Contract, address } = blockchain;
   const [error, setError] = useState("");
 
   // Check if account connected on MetaMask is the owner

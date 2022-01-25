@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Manager = () => {
   let navigate = useNavigate();
   const blockchain = useContext(LotteryContext);
-  const { provider, web3Provider, signer, lottery_Contract, ERC20Contract, address } = blockchain;
+  const { lottery_Contract, address } = blockchain;
   const [error, setError] = useState("");
 
   // Go to customer page if MetaMask user is not the manager

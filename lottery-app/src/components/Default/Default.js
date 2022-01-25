@@ -4,6 +4,7 @@ import { Button } from 'rimble-ui';
 import { 
   weiToEth,
   ethToWei,
+  addMetamaskListeners
 } 
 from '../../apis/blockchain';
 import { LotteryContext } from '../../context/Context';
@@ -17,8 +18,12 @@ const Customer = () => {
   const [error, setError] = useState("");
   const [ticketPrice, setTicketPrice] = useState(0);
   const blockchain = useContext(LotteryContext);
-  const { provider, web3Provider, signer, lottery_Contract, ERC20Contract, address } = blockchain;
+  const { provider, signer, lottery_Contract, ERC20Contract, address } = blockchain;
   
+  const clicked = () => {
+    // handleClick;
+  }
+
   // Get and set current ticket price and lottery prize
   if (lottery_Contract){
     lottery_Contract.getPrice().then((result) => {
@@ -50,6 +55,7 @@ const Customer = () => {
 
   // Go to customer page if MetaMask account is not the owner
   async function goToOwnerPage () {
+    console.log(address);
     if(address && await lottery_Contract.hasRole(DEFAULT_ADMIN_ROLE, address)){
       navigate('/owner');
     } else {
@@ -63,6 +69,22 @@ const Customer = () => {
     } else {
       alert("You are not a manager.");
     }
+  }
+
+  const chainChangedCallback = (chainID) => {
+    window.location.reload();
+  }
+  
+  const accountsChangedCallback = async (accounts) => {
+    if (accounts.length == 0) {
+    } else if (accounts[0] !== signer.getAddress().then((result) => {return result;})) {
+      window.location.reload();      
+      // handleClick();
+    }
+  }
+  
+  if (provider && signer) {
+    addMetamaskListeners(provider, chainChangedCallback, accountsChangedCallback);
   }
 
   return (
